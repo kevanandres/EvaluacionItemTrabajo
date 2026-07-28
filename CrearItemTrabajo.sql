@@ -128,3 +128,33 @@ BEGIN
 
     SELECT @@ROWCOUNT;
 END
+
+--SP CONSULTA PENDIENTES POR USUARIO ASC
+Create procedure kc_Items_ObtenerPendientesUsuario
+    @UsuarioAsignado NVARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT
+        IdItem,
+        Titulo,
+        FechaCreacion,
+        FechaEntrega,
+        Relevancia,
+        Estado,
+        UsuarioAsignado,
+        FechaCompletado
+    FROM ItemsTrabajo
+    WHERE UsuarioAsignado = @UsuarioAsignado
+      AND Estado = 'PENDIENTE'
+    ORDER BY
+        CASE Relevancia
+            WHEN 'Alta' THEN 1
+            WHEN 'Baja' THEN 2
+            ELSE 3
+        END,
+        FechaEntrega ASC
+END
+
+exec kc_Items_ObtenerPendientesUsuario 'a.cardenas'

@@ -3,6 +3,9 @@ using System.Data;
 
 namespace ItemTrabajo.Data
 {
+    /// <summary>
+    /// Establece la conexion hacia la BDD
+    /// </summary>
     public class DbConnectionFactory
     {
         private readonly string _connectionString;

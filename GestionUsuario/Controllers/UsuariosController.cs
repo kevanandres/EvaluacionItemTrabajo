@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GestionUsuario.Controllers
 {
+    /// <summary>
+    /// Obtiene todos los usuarios activos que se encuentren en la tabla Usuarios de la BDD GestionUsuario
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : ControllerBase

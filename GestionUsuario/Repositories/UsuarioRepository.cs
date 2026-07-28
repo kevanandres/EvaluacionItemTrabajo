@@ -5,6 +5,9 @@ using System.Data;
 
 namespace GestionUsuario.Repositories
 {
+    /// <summary>
+    /// Entabla las conexiones con el SP de la BDD correcspondiente
+    /// </summary>
     public class UsuarioRepository
     {
         private readonly DbConnectionFactory _connectionFactory;
@@ -14,6 +17,10 @@ namespace GestionUsuario.Repositories
             _connectionFactory = connectionFactory;
         }
 
+        /// <summary>
+        /// Obtiene los usuarios activos
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<Usuario>> ObtenerActivosAsync()
         {
             using var connection = _connectionFactory.CreateConnection();

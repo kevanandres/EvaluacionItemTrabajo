@@ -27,12 +27,13 @@ namespace ItemTrabajo.Controllers
         [HttpPost]
         public async Task<IActionResult> Crear([FromBody] CrearItemRequest request)
         {
-            var usuarioAsignado = await _itemService.CrearAsync(request);
+            var resultado = await _itemService.CrearAsync(request);
 
             return Ok(new
             {
                 mensaje = "Ítem creado correctamente",
-                usuarioAsignado
+                usuarioAsignado = resultado.UsuarioAsignado,
+                pendientesOrdenados = resultado.PendientesOrdenados
             });
         }
 

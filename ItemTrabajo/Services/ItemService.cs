@@ -26,7 +26,7 @@ namespace ItemTrabajo.Services
             _usuarioClient = usuarioClient;
         }
 
-        public async Task<string> CrearAsync(CrearItemRequest request)
+        public async Task<CrearItemResponse> CrearAsync(CrearItemRequest request)
         {
             var usuarios = await _usuarioClient.ObtenerActivosAsync();
 
@@ -78,7 +78,16 @@ namespace ItemTrabajo.Services
                 usuarioSeleccionado.NombreUsuario
             );
 
-            return usuarioSeleccionado.NombreUsuario;
+            var pendientesOrdenados =
+            await _itemRepository.ObtenerPendientesUsuarioAsync(
+                usuarioSeleccionado.NombreUsuario
+            );
+
+            return new CrearItemResponse
+            {
+                UsuarioAsignado = usuarioSeleccionado.NombreUsuario,
+                PendientesOrdenados = pendientesOrdenados
+            };
         }
 
         public async Task<bool> CompletarAsync(int idItem)

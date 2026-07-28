@@ -3,6 +3,9 @@ using System.Data;
 
 namespace GestionUsuario.Data
 {
+    /// <summary>
+    /// Establece la conexion hacia la BDD
+    /// </summary>
     public class DbConnectionFactory
     {
         private readonly string _connectionString;

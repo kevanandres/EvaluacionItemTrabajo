@@ -1,5 +1,8 @@
 ﻿namespace ItemTrabajo.Models
 {
+    /// <summary>
+    /// Clase items de trabajo
+    /// </summary>
     public class ItemsTrabajo
     {
         public int IdItem { get; set; }

@@ -4,6 +4,9 @@ namespace ItemTrabajo.Clients
 {
     public class UsuarioClient
     {
+        /// <summary>
+        /// Consulme el microservicio de GestionUsuario, nos trae los usuarios activos.
+        /// </summary>
         private readonly HttpClient _httpClient;
 
         public UsuarioClient(HttpClient httpClient)
